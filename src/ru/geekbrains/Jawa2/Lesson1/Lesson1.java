@@ -2,41 +2,89 @@ package ru.geekbrains.Jawa2.Lesson1;
 
 import ru.geekbrains.Jawa2.Lesson1.participant.*;
 import ru.geekbrains.Jawa2.Lesson1.surface.*;
-//import ru.geekbrains.Jawa2.Lesson1.surface.Obstacle;
-//import ru.geekbrains.Jawa2.Lesson1.surface.Road;
-//import ru.geekbrains.Jawa2.Lesson1.surface.Wall;
-//import ru.geekbrains.Jawa2.Lesson1.surface.Water;
 
 
 //2. Добавить класс Team, который будет содержать:
 // название команды, массив из 4-х участников
 // (т.е. в конструкторе можно сразу всех участников указывать),
 
-    public class Lesson1 {
-        public static void main(String[] args) {
-            IVoice.Competitor[] competitors = {
-                    new Dog("Jack", "black", 10, 1, 2),
-                    new Cat("Mag", "white", 10, 0, 3),
-                    new Turtle("Turtle", "green", 100, 10, 0),
-                    new Human("Rick", "negro", 50, 20,2)
-            };
-            Obstacle[] obstacles = {
-                    new Road(8),
-                    new Wall(2),
-                    new Water(1),
-                    new Wall(2)
-            };
+public class Lesson1 {
 
-            for (IVoice.Competitor competitor: competitors){
-                for (Obstacle obstacle: obstacles){
-                    obstacle.doIt(competitor);
-                    if (!competitor.onDistance()) break;
-                }
-            }
+    public static void main(String[] args) {
+        Course[] courses;
+        Team[] teams;
+        Object[] objects;
+        Team teamWinner= null;
 
-            for (IVoice.Competitor competitor: competitors){
-                competitor.info();
+        objects = (Object[]) initAll();
+
+        courses = (Course[]) objects[0];
+        teams = (Team[]) objects[1];
+
+        for (Team team : teams) {
+            for (Course course : courses) {
+                team.raceThrough(course);
             }
+            team.showResult();
+            if (teamWinner == null) teamWinner = team;
+            else if (teamWinner.getPoint()<team.getPoint()) teamWinner = team;
+            else if (teamWinner.getPoint()==team.getPoint()) teamWinner = null;
         }
+
+        if (teamWinner == null) {
+            System.out.println("Победила дружба!\n обе команды набрали по "+teamWinner.getPoint()+" очков.");
+        } else {
+            System.out.println("Победила команда " + teamWinner.getName() + ", набрав "+teamWinner.getPoint() + " очков!");
+        }
+
+
     }
+
+    public static Object initAll() {
+
+
+        IVoice.Competitor[] competitors1 = {
+                new Dog("Jack", "black", 10, 1, 2),
+                new Cat("Mag", "white", 10, 0, 3),
+                new Turtle("Turtle", "green", 5, 10, 0),
+                new Human("Rick", "negro", 50, 20, 2)};
+
+        Team team1 = new Team("Team1", competitors1);
+
+        IVoice.Competitor[] competitors2 = {
+                new Bird("Chijz", "yellow", 100, 0, 100),
+                new Fish("Fishyyy", "black", 0, 100, 0),
+                new Turtle("Castle", "grey", 2, 10, 0),
+                new Dog("Jack", "white", 80, 23, 1)};
+        Team team2 = new Team("Team2", competitors2);
+
+        Obstacle[] obstacles1 = {
+                new Road(8),
+                new Wall(2),
+                new Water(1),
+                new Wall(2)
+        };
+        Course course1 = new Course("Level1", obstacles1);
+
+
+        Obstacle[] obstacles2 = {
+                new Road(16),
+                new Wall(5),
+                new Water(10),
+                new Wall(1)
+        };
+        Course course2 = new Course("Level2", obstacles2);
+
+        Course[] courses = new Course[]{course1, course2};
+
+        Team[] teams = new Team[]{team1, team2};
+
+
+        return new Object[]{courses,teams};
+
+
+    }
+}
+
+
 
