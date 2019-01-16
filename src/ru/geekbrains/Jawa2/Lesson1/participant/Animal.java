@@ -1,21 +1,30 @@
 package ru.geekbrains.Jawa2.Lesson1.participant;
 
-public class Animal implements IVoice.Competitor {
+//import ru.geekbrains.Jawa2.Lesson1.Competitor;
+
+public class Animal implements Competitor {
     private String name;
     private String color;
-
+    private String ClassName;
     private int maxRunDistance;
     private int maxSwimDistance;
     private int maxJumpHeight;
 
     private boolean onDistance = true;
 
-    public Animal(String name, String color, int maxRunDistance, int maxSwimDistance, int maxJumpHeight) {
+    public Animal(String name, String color, int maxRunDistance, int maxSwimDistance, int maxJumpHeight,String ClassName) {
         this.name = name;
         this.color = color;
         this.maxRunDistance = maxRunDistance;
         this.maxSwimDistance = maxSwimDistance;
         this.maxJumpHeight = maxJumpHeight;
+        this.ClassName = ClassName;
+    }
+    public String getClassName() {
+        return ClassName;
+    }
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -53,8 +62,8 @@ public class Animal implements IVoice.Competitor {
         return onDistance;
     }
 
-    @Override
-    public void info() {
-        System.out.println(name + (onDistance ? " прошел" : " не прошел" ));
-    }
+//    @Override
+//    public void info() {
+//        System.out.println(name + (onDistance ? " прошел" : " не прошел" ));
+//    }
 }

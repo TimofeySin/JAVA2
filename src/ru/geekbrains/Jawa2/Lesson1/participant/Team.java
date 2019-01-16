@@ -8,12 +8,15 @@ import ru.geekbrains.Jawa2.Lesson1.surface.Obstacle;
 // метод для вывода информации о членах команды прошедших дистанцию, метод вывода информации обо всех членах команды.
 public class Team {
 
-    private IVoice.Competitor[] animals;
+    private Competitor[] animals;
     private String name;
     private int point;
 
+    public Competitor[] getAnimals() {
+        return animals;
+    }
 
-    public Team( String name, IVoice.Competitor[] animals) {
+    public Team(String name, Competitor[] animals) {
         this.animals = animals;
         this.name = name;
     }
@@ -23,7 +26,7 @@ public class Team {
     }
 
     public void raceThrough(Course courses) {
-        for (IVoice.Competitor animal:animals) {
+        for (Competitor animal:animals) {
             for (Obstacle course: courses.getObstacle()) {
                 course.doIt(animal);
                 if (animal.onDistance()) point++;

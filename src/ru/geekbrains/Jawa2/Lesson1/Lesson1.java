@@ -25,16 +25,28 @@ public class Lesson1 {
             for (Course course : courses) {
                 team.raceThrough(course);
             }
-            team.showResult();
+
             if (teamWinner == null) teamWinner = team;
             else if (teamWinner.getPoint()<team.getPoint()) teamWinner = team;
             else if (teamWinner.getPoint()==team.getPoint()) teamWinner = null;
+        }
+        System.out.println("\n");
+        for (Team team : teams) {
+            team.showResult();
         }
 
         if (teamWinner == null) {
             System.out.println("Победила дружба!\n обе команды набрали по "+teamWinner.getPoint()+" очков.");
         } else {
             System.out.println("Победила команда " + teamWinner.getName() + ", набрав "+teamWinner.getPoint() + " очков!");
+            for (Competitor animal: teamWinner.getAnimals()) {
+                if (animal instanceof IVoice) {
+                    System.out.print(animal.getClassName() + " по имени "+animal.getName()+" сказало ");
+                    ((IVoice) animal).voice();
+                } else {
+                    System.out.println(animal.getClassName() + " по имени "+animal.getName()+" промолчала.");
+                }
+            }
         }
 
 
@@ -43,7 +55,7 @@ public class Lesson1 {
     public static Object initAll() {
 
 
-        IVoice.Competitor[] competitors1 = {
+        Competitor[] competitors1 = {
                 new Dog("Jack", "black", 10, 1, 2),
                 new Cat("Mag", "white", 10, 0, 3),
                 new Turtle("Turtle", "green", 5, 10, 0),
@@ -51,7 +63,7 @@ public class Lesson1 {
 
         Team team1 = new Team("Team1", competitors1);
 
-        IVoice.Competitor[] competitors2 = {
+        Competitor[] competitors2 = {
                 new Bird("Chijz", "yellow", 100, 0, 100),
                 new Fish("Fishyyy", "black", 0, 100, 0),
                 new Turtle("Castle", "grey", 2, 10, 0),

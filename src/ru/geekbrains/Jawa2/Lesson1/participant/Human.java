@@ -1,11 +1,14 @@
 package ru.geekbrains.Jawa2.Lesson1.participant;
 
-public class Human extends Animal implements IVoice.Competitor {
+public class Human extends Animal implements IVoice {
 
     public Human(String name, String color, int maxRunDistance, int maxSwimDistance, int maxJumpHeight) {
-        super(name, color, maxRunDistance, maxSwimDistance, maxJumpHeight);
+        super(name, color, maxRunDistance, maxSwimDistance, maxJumpHeight,"Человечишко");
     }
-
+    @Override
+    public void voice() {
+        System.out.println("твою ж...");
+    }
 //    @Override
 //    public void run(int dist) {
 //        if (dist <= this.maxRunDistance){
