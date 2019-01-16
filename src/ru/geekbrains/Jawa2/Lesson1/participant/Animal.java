@@ -1,6 +1,6 @@
-package ru.geekbrains.Jawa2.lesson1.marathon;
+package ru.geekbrains.Jawa2.Lesson1.participant;
 
-public class Animal implements Competitor {
+public class Animal implements IVoice.Competitor {
     private String name;
     private String color;
 

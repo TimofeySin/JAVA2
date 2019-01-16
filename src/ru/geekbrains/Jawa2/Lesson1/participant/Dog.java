@@ -1,4 +1,4 @@
-package ru.geekbrains.Jawa2.lesson1.marathon;
+package ru.geekbrains.Jawa2.Lesson1.participant;
 
 public class Dog extends Animal {
     public Dog(String name, String color, int maxRunDistance, int maxSwimDistance, int maxJumpHeight) {
