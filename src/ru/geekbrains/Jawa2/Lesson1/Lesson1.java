@@ -25,18 +25,19 @@ public class Lesson1 {
             for (Course course : courses) {
                 team.raceThrough(course);
             }
-
             if (teamWinner == null) teamWinner = team;
             else if (teamWinner.getPoint()<team.getPoint()) teamWinner = team;
             else if (teamWinner.getPoint()==team.getPoint()) teamWinner = null;
         }
+
         System.out.println("\n");
         for (Team team : teams) {
+
             team.showResult();
         }
 
         if (teamWinner == null) {
-            System.out.println("Победила дружба!\n обе команды набрали по "+teamWinner.getPoint()+" очков.");
+            System.out.println("Победила дружба!\n обе команды набрали по "+teams[0].getPoint()+" очков.");
         } else {
             System.out.println("Победила команда " + teamWinner.getName() + ", набрав "+teamWinner.getPoint() + " очков!");
             for (Competitor animal: teamWinner.getAnimals()) {

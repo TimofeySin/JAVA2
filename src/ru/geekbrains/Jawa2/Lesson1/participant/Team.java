@@ -16,6 +16,10 @@ public class Team {
         return animals;
     }
 
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
     public Team(String name, Competitor[] animals) {
         this.animals = animals;
         this.name = name;
