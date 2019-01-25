@@ -1,9 +1,7 @@
 package ru.geekbrains.Jawa2.Lesson3;
 
 import java.lang.invoke.SwitchPoint;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class Lesson3 {
     public static void main(String[] args) {
@@ -13,30 +11,35 @@ public class Lesson3 {
 //1. Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся).
 // Найти и вывести список уникальных слов, из которых состоит массив (дубликаты не считаем).
 // Посчитать сколько раз встречается каждое слово.
-        unikomWordsIn( arrrayText);
+      //  unikomWordsIn( arrrayText);
+
+        //2. Написать простой класс ТелефонныйСправочник,
+// который хранит в себе список фамилий и телефонных номеров.
+// В этот телефонный справочник с помощью метода add() можно добавлять записи.
+// С помощью метода get() искать номер телефона по фамилии.
+// Следует учесть, что под одной фамилией может быть несколько телефонов (в случае однофамильцев),
+// тогда при запросе такой фамилии должны выводиться все телефоны.
+
+////пример добавления
+        TelephoneBook book = new TelephoneBook();
+        book.addTelephoneBook(159753,"Синичкин");
+
+        String nameFoeSearch = "Синичкин";
+
+       book.getNumber("Синичкин");
+
 
 
     }
 
     public static void unikomWordsIn(String[] arrrayText){
     HashMap myMap = new HashMap();
-    for (String word: arrrayText) {
-        //myMap.containsKey(word);
-        myMap.put(word,(myMap.containsKey(word))? (int) myMap.get(word)+1:1);
-    }
 
+    for (String word: arrrayText)  myMap.put(word,(myMap.containsKey(word))? (int) myMap.get(word)+1:1);
 
     System.out.println("Количество уникальных слов в тексте: "+myMap.size());
 
-
-
-
-
-
-    myMap.forEach((key, value) -> {
-
-        System.out.println("Слово: \""+ key+"\" встречается : "+ value +" "+Spriagaem_RAZ((int)value));
-    });
+    myMap.forEach((key, value) -> System.out.println("Слово: \""+ key+"\" встречается : "+ value +" "+Spriagaem_RAZ((int)value)));
 
 
 }
@@ -82,33 +85,4 @@ public class Lesson3 {
     }return "раз";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//2. Написать простой класс ТелефонныйСправочник,
-// который хранит в себе список фамилий и телефонных номеров.
-// В этот телефонный справочник с помощью метода add() можно добавлять записи.
-// С помощью метода get() искать номер телефона по фамилии.
-// Следует учесть, что под одной фамилией может быть несколько телефонов (в случае однофамильцев),
-// тогда при запросе такой фамилии должны выводиться все телефоны.
 }
