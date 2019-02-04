@@ -1,14 +1,12 @@
 package ru.geekbrains.Jawa2.Lesson6.client;
 
-import ru.geekbrains.Jawa2.Lesson6.ListenClient;
-import ru.geekbrains.Jawa2.Lesson6.ListenServer;
+import ru.geekbrains.Jawa2.Lesson6.ClientHandler;
 
 import java.io.IOException;
 import java.net.Socket;
 
 
 class Client {
-
 
     Client(String host, int port) {
         Socket socket;
@@ -18,24 +16,8 @@ class Client {
             e.printStackTrace();
             return;
         }
-
-        ListenClient treadClient = new ListenClient(socket);
-        ListenServer treadServer = new ListenServer(socket);
-
-        treadClient.setDaemon(true);
-        treadServer.setDaemon(true);
-
-        treadServer.start();
-        treadClient.start();
-        do {
-            if (treadClient.isKill()) {
-                treadServer.setKill(true);
-            }
-            if (treadServer.isKill()) {
-                treadClient.setKill(true);
-            }
-
-        } while (!treadClient.isKill() && !treadServer.isKill());
+        ClientHandler clienthandler = new ClientHandler(socket);
+        clienthandler.Handler();
 
     }
 }

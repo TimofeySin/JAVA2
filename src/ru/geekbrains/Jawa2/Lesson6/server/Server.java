@@ -1,5 +1,7 @@
 package ru.geekbrains.Jawa2.Lesson6.server;
 
+import ru.geekbrains.Jawa2.Lesson6.ClientHandler;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

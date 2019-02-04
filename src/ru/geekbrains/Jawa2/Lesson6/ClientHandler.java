@@ -1,17 +1,18 @@
-package ru.geekbrains.Jawa2.Lesson6.server;
+package ru.geekbrains.Jawa2.Lesson6;
 
 import ru.geekbrains.Jawa2.Lesson6.ListenClient;
 import ru.geekbrains.Jawa2.Lesson6.ListenServer;
 
 import java.net.Socket;
 
-class ClientHandler {
+public class ClientHandler {
     private Socket socket;
-    ClientHandler(Socket socket) {
+
+    public ClientHandler(Socket socket) {
         this.socket = socket;
     }
 
-    void Handler() {
+    public void Handler() {
         ListenServer treadServer = new ListenServer(socket);
         ListenClient treadClient = new ListenClient(socket);
 
@@ -20,10 +21,14 @@ class ClientHandler {
 
         treadServer.start();
         treadClient.start();
-        do{
-            if (treadClient.isKill()){ treadServer.setKill(true);}
-            if (treadServer.isKill()){ treadClient.setKill(true);}
+        do {
+            if (treadClient.isKill()) {
+                treadServer.setKill(true);
+            }
+            if (treadServer.isKill()) {
+                treadClient.setKill(true);
+            }
 
-        }while (!treadClient.isKill() && !treadServer.isKill());
+        } while (!treadClient.isKill() && !treadServer.isKill());
     }
 }
