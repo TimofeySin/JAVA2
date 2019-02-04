@@ -1,4 +1,4 @@
-package ru.geekbrains.Jawa2.Lesson6.server;
+package ru.geekbrains.Jawa2.Lesson6;
 
 
 import ru.geekbrains.Jawa2.Lesson6.Listen;
@@ -8,12 +8,12 @@ import java.net.Socket;
 import java.util.Scanner;
 
 
-class ListenClient extends Listen {
+public class ListenClient extends Listen {
 
     private Scanner scannerClient;
     private Socket socket;
 
-    ListenClient(Socket socket) {
+    public ListenClient(Socket socket) {
         this.socket = socket;
         try {
             this.scannerClient = new Scanner(socket.getInputStream());

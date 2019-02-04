@@ -1,5 +1,8 @@
 package ru.geekbrains.Jawa2.Lesson6.server;
 
+import ru.geekbrains.Jawa2.Lesson6.ListenClient;
+import ru.geekbrains.Jawa2.Lesson6.ListenServer;
+
 import java.net.Socket;
 
 class ClientHandler {

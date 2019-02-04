@@ -1,4 +1,4 @@
-package ru.geekbrains.Jawa2.Lesson6.server;
+package ru.geekbrains.Jawa2.Lesson6;
 
 import ru.geekbrains.Jawa2.Lesson6.Listen;
 
@@ -7,13 +7,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-class ListenServer extends Listen {
+public class ListenServer extends Listen {
 
     private PrintWriter printWriter;
     private Scanner scannerServer;
 
 
-    ListenServer(Socket socket) {
+    public ListenServer(Socket socket) {
         try {
             this.printWriter = new PrintWriter(socket.getOutputStream(), true);
             this.scannerServer = new Scanner(System.in);

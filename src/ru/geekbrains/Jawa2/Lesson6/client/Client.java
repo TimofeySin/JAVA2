@@ -1,5 +1,8 @@
 package ru.geekbrains.Jawa2.Lesson6.client;
 
+import ru.geekbrains.Jawa2.Lesson6.ListenClient;
+import ru.geekbrains.Jawa2.Lesson6.ListenServer;
+
 import java.io.IOException;
 import java.net.Socket;
 
