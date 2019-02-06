@@ -13,13 +13,14 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller{
+public class Controller {
 
     //chat pane elements
     public AnchorPane chatPane;
     public TextField messageField;
     public Button sendButton;
     public TextArea textArea;
+    public Label userName;
 
     //login pane elements
     public GridPane loginPane;
@@ -30,7 +31,7 @@ public class Controller{
     private final String HOST = "localhost";
     private final int PORT = 8080;
     private final String AUTH = "/auth ";
-    private final String AUTH_SUCCESS ="/auth_success";
+    private final String AUTH_SUCCESS = "/auth_success";
     private final String AUTH_FAILED = "/auth_failed";
 
     private Socket socket;
@@ -44,20 +45,20 @@ public class Controller{
     }
 
     public void tryAuth(ActionEvent actionEvent) {
-        if (socket == null || socket.isClosed()){
+        userName.setText(loginField.getText());
+        if (socket == null || socket.isClosed()) {
             initSocket();
         }
         try {
-            out.writeUTF( AUTH + loginField.getText() + " " + passField.getText());
+            out.writeUTF(AUTH + loginField.getText() + " " + passField.getText());
             loginField.clear();
             passField.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    private void initSocket(){
+    private void initSocket() {
         try {
             socket = new Socket(HOST, PORT);
             in = new DataInputStream(socket.getInputStream());
@@ -66,13 +67,13 @@ public class Controller{
             Thread tr = new Thread(() -> {
                 try {
                     String message;
-                    while (true){
+                    while (true) {
                         message = in.readUTF();
-                        if (message.startsWith(AUTH_SUCCESS)){
+                        if (message.startsWith(AUTH_SUCCESS)) {
                             authenticate(true);
                             break;
                         }
-                        if (message.startsWith(AUTH_FAILED)){
+                        if (message.startsWith(AUTH_FAILED)) {
 //                            alert();
                             System.out.println("auth failed: " + message);
                         }
