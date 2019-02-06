@@ -29,6 +29,9 @@ public class Controller{
 
     private final String HOST = "localhost";
     private final int PORT = 8080;
+    private final String AUTH = "/auth ";
+    private final String AUTH_SUCCESS ="/auth_success";
+    private final String AUTH_FAILED = "/auth_failed";
 
     private Socket socket;
     private DataInputStream in;
@@ -45,7 +48,7 @@ public class Controller{
             initSocket();
         }
         try {
-            out.writeUTF("/auth " + loginField.getText() + " " + passField.getText());
+            out.writeUTF( AUTH + loginField.getText() + " " + passField.getText());
             loginField.clear();
             passField.clear();
         } catch (IOException e) {
@@ -65,11 +68,11 @@ public class Controller{
                     String message;
                     while (true){
                         message = in.readUTF();
-                        if (message.startsWith("/auth_success")){
+                        if (message.startsWith(AUTH_SUCCESS)){
                             authenticate(true);
                             break;
                         }
-                        if (message.startsWith("/auth_failed")){
+                        if (message.startsWith(AUTH_FAILED)){
 //                            alert();
                             System.out.println("auth failed: " + message);
                         }
