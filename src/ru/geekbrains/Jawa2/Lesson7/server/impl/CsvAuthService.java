@@ -11,7 +11,7 @@ import java.util.Set;
 public class CsvAuthService implements AuthService {
     private Set<Client> users = new LinkedHashSet<>();
     private final String PATH = "./data/db.csv";
-
+    private final String SPLITE_CHAR = ";";
 
     public CsvAuthService() {
         File file = Paths.get(PATH).toFile();
@@ -27,7 +27,7 @@ public class CsvAuthService implements AuthService {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String user = reader.readLine();
             while (user != null) {
-                String[] creds = user.split(";");
+                String[] creds = user.split(SPLITE_CHAR);
                 users.add(new Client(creds[0], creds[1], creds[2]));
                 user = reader.readLine();
             }
