@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Map;
 
 public class ClientHandler {
 
@@ -14,6 +15,7 @@ public class ClientHandler {
     private DataInputStream in;
     private DataOutputStream out;
     private Client client;
+    private int lastActive;
 
     public ClientHandler(Server server, Socket socket, Client client) {
         this.server = server;
@@ -25,12 +27,12 @@ public class ClientHandler {
         try {
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-
+            setLastActive((int)System.currentTimeMillis());
             new Thread(() -> {
                 try {
                     while (true) {
                         String line = in.readUTF();
-
+                        setLastActive((int)System.currentTimeMillis());
                         if (line.startsWith("/")){
                             if (line.startsWith("/w ")){
                                 String[] tokens = line.split(" ", 3);
@@ -59,6 +61,22 @@ public class ClientHandler {
     public void sendMsg(String msg) {
         try {
             out.writeUTF(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setLastActive(int lastActive) {
+        this.lastActive = lastActive;
+    }
+
+    public int getLastActive() {
+        return lastActive;
+    }
+
+    public void closeClient(){
+        try {
+            this.socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
