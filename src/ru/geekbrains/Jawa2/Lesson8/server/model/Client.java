@@ -1,4 +1,4 @@
-package lesson7.server.model;
+package ru.geekbrains.Jawa2.Lesson8.server.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,8 +1,8 @@
-package lesson7.server;
+package  ru.geekbrains.Jawa2.Lesson8.server;
 
-import lesson7.server.impl.CsvAuthService;
-import lesson7.server.model.Client;
-import lesson7.server.task.AuthenticationTask;
+import ru.geekbrains.Jawa2.Lesson8.server.impl.CsvAuthService;
+import ru.geekbrains.Jawa2.Lesson8.server.model.Client;
+import ru.geekbrains.Jawa2.Lesson8.server.task.AuthenticationTask;
 
 import java.io.IOException;
 import java.net.ServerSocket;

@@ -1,4 +1,4 @@
-package lesson7.fxClient;
+package  ru.geekbrains.Jawa2.Lesson8.fxClient;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

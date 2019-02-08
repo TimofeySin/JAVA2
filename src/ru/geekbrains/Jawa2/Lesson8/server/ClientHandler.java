@@ -1,6 +1,6 @@
-package lesson7.server;
+package ru.geekbrains.Jawa2.Lesson8.server;
 
-import lesson7.server.model.Client;
+import ru.geekbrains.Jawa2.Lesson8.server.model.Client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

@@ -1,4 +1,4 @@
-package lesson7.fxClient;
+package  ru.geekbrains.Jawa2.Lesson8.fxClient;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;

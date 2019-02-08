@@ -1,9 +1,9 @@
-package lesson7.server.task;
+package ru.geekbrains.Jawa2.Lesson8.server.task;
 
-import lesson7.server.ClientHandler;
-import lesson7.server.Server;
-import lesson7.server.api.AuthService;
-import lesson7.server.model.Client;
+import ru.geekbrains.Jawa2.Lesson8.server.ClientHandler;
+import ru.geekbrains.Jawa2.Lesson8.server.Server;
+import ru.geekbrains.Jawa2.Lesson8.server.api.AuthService;
+import ru.geekbrains.Jawa2.Lesson8.server.model.Client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

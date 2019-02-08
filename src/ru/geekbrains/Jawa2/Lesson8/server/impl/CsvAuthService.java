@@ -1,7 +1,7 @@
-package lesson7.server.impl;
+package ru.geekbrains.Jawa2.Lesson8.server.impl;
 
-import lesson7.server.api.AuthService;
-import lesson7.server.model.Client;
+import ru.geekbrains.Jawa2.Lesson8.server.api.AuthService;
+import ru.geekbrains.Jawa2.Lesson8.server.model.Client;
 
 import java.io.*;
 import java.nio.file.Paths;
