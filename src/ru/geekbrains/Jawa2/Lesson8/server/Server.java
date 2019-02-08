@@ -13,7 +13,7 @@ import java.util.List;
 public class Server {
 
     private List<ClientHandler> clients = Collections.synchronizedList(new ArrayList<>());
-    private final int timeOut = 15;//в секундах
+    private final int timeOut = 120;//в секундах
 
     public Server() {
         ServerSocket server = null;
