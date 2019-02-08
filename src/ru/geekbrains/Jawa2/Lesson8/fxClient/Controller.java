@@ -83,6 +83,10 @@ public class Controller {
                             String finalMessage = message;
                             Platform.runLater(() -> stage.setTitle("Chat-" + finalMessage.split(" ")[1]));
                         }
+                        if (message.equals("/Close")) {
+                            Platform.exit();
+                            System.out.println("Close time out");
+                        }
                         if (message.startsWith("/")) {
                             if (message.startsWith("/users ")) {
                                 String[] users = message.split(" ");
